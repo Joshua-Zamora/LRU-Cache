@@ -4,12 +4,20 @@ from Heaps import MaxHeap
 
 def main(a):
     if a == 1:
-        least_recently_used = LRU(10)
+        least_recently_used = LRU(3)
 
-        for i in range(15):
-            least_recently_used.put(i)
+        least_recently_used.put("A", 0)
+        least_recently_used.put("B", 1)
+        least_recently_used.put("C", 2)
 
-        print(least_recently_used)
+        least_recently_used.print_cache_dictionary()
+        least_recently_used.print_cache_doubly()
+        print()
+
+        least_recently_used.get("A")
+        least_recently_used.print_cache_dictionary()
+        least_recently_used.print_cache_doubly()
+        print()
 
     else:
         word_list = []
@@ -33,3 +41,4 @@ def most_frequent_elements(words):
 
 
 main(1)
+
