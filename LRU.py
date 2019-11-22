@@ -21,14 +21,19 @@ class LRU:
                 self._head.previous = None
 
                 self._tail.next = temp
+                self._tail = temp
                 temp.next = None
             else:
-                desired_node.previous.next = desired_node.next
-                desired_node.next.previous = desired_node.previous
-                desired_node.next = None
+                left_node = desired_node.previous
+                right_node = desired_node.next
+
+                left_node.next = right_node
+                right_node.previous = left_node
+
                 self._tail.next = desired_node
                 desired_node.previous = self._tail
-                self._tail = self._tail.next
+                self._tail = desired_node
+                desired_node.next = None
 
             return desired_node.value
         else:
@@ -81,3 +86,4 @@ class LRU:
 
     def __str__(self):
         return str(self._cache)
+
